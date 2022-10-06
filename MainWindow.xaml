@@ -28,6 +28,8 @@
             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" >
                 <Button Width="30" Height="20" VerticalAlignment="Top"/>
                 <Button Width="30" Height="20" VerticalAlignment="Top"/>
+                <Button Width="30" Height="20" VerticalAlignment="Top"/>
+                <Button Width="30" Height="20" VerticalAlignment="Top"/>
             </StackPanel>
             
         </Grid>
