@@ -20,22 +20,46 @@
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Row= "1" Grid.Column="1"  Margin="5" IsReadOnly="True" ColumnWidth="*" x:Name="InforPerTech" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding ID}"  />
-                <DataGridTextColumn Header="Тип"  Binding="{Binding Class}"/>
-                <DataGridTextColumn Header="Устройство"  Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Бренд"  Binding="{Binding Brand}"/>
-                <DataGridTextColumn Header="Модель"  Binding="{Binding Model}"/>
-                <DataGridTextColumn Header="Кабинет"   Binding="{Binding NumKab}"/>
-                <DataGridTextColumn Header="Номер"     Binding="{Binding Number}"/>
-                <DataGridTextColumn Header="Состояние"  Binding="{Binding Condition}"/>
+                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding IDPer}"  />
+                <DataGridTextColumn Header="Тип"  Binding="{Binding NameType}"/>
+                <DataGridTextColumn Header="Организация"  Binding="{Binding NameOrg}"/>
+                <DataGridTextColumn Header="Номер"  Binding="{Binding Number}"/>
                 <DataGridTextColumn Header="Начало работы"  Binding="{Binding StartWork}"/>
+                <DataGridTextColumn Header="Начало работы"  Binding="{Binding StartWork}"/>
+                <DataGridTextColumn Header="Статус"  Binding="{Binding NamaStatus}"/>
+                <DataGridTextColumn Header="Работа"  Binding="{Binding NameWorks}"/>
+                <DataGridTextColumn Header="Коментарий"   Binding="{Binding  Path = Comments}"/>
             </DataGrid.Columns>
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Path=Price}" />
-                        <TextBlock Text=" рублей по скидке" />
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock   FontSize="25" Text=" Процессор: " FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">                            
+                            <TextBlock   FontSize="25" Text=" Название: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=NameProcces}" />
+                            <TextBlock   FontSize="25" Text=" Скорость: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=SpeedProcces}" />
+                            <TextBlock   FontSize="25" Text=" Производитель: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=MakerProcc}" />
+                        </StackPanel>
+                        <TextBlock   FontSize="25"   Text=" Материнская плата: " FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">                          
+                            <TextBlock   FontSize="25" Text=" Название: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=ModelMatePlat}" />
+                            <TextBlock   FontSize="25" Text=" Производитель: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=MakerMaterPlat}" />
+                        </StackPanel>
+                        <TextBlock   FontSize="25"   Text=" Видеокарта: " FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock   FontSize="25" Text=" Название: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=ModeVideos}" />
+                            <TextBlock   FontSize="25" Text=" Скорость: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=VVideoMemory}" />
+                            <TextBlock   FontSize="25" Text=" Производитель: " />
+                            <TextBlock   FontSize="25" Text="{Binding Path=MakerVideoCard}" />
+                        </StackPanel>
                     </StackPanel>
+
                 </DataTemplate>
             </DataGrid.RowDetailsTemplate>
 
