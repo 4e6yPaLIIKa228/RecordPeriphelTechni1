@@ -30,12 +30,13 @@
                                 <DataGridTextColumn Header="Тип" FontSize="20" Width="270" Binding="{Binding NameType}"/>
                                 <DataGridTextColumn Header="Организация" FontSize="20"  Binding="{Binding NameOrg}"/>
                                 <DataGridTextColumn Header="Номер" FontSize="20"  Binding="{Binding Number}"/>
+                                <DataGridTextColumn Header="Кабинет" FontSize="20"  Binding="{Binding Kabunet}"/>
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>
                                 <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NamaStatus}"/>
                                 <DataGridTextColumn Header="Работа" FontSize="20"  Binding="{Binding NameWorks}"/>
-                                <DataGridTextColumn Header="Коментарий" FontSize="20"   Binding="{Binding  Path = Comments}"/>
+                                <DataGridTextColumn Header="Коментарий" FontSize="20"   Binding="{Binding  Comments}"/>
                             </DataGrid.Columns>
                             <DataGrid.RowDetailsTemplate>
                                 <DataTemplate>
@@ -72,6 +73,8 @@
                                             <TextBlock   FontSize="25" Text="{Binding Path= Model1}" />
                                             <TextBlock   FontSize="25" Text=" Скорость: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= V1 }" />
+                                            <TextBlock   FontSize="25" Text=" Тип папяти: " />
+                                            <TextBlock   FontSize="25" Text="{Binding Path= TypeMemory1}" />
                                             <TextBlock   FontSize="25" Text=" Производитель: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= Maker1}" />
                                         </StackPanel>
@@ -81,6 +84,8 @@
                                             <TextBlock   FontSize="25" Text="{Binding Path= Model2}" />
                                             <TextBlock   FontSize="25" Text=" Скорость: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= V2 }" />
+                                            <TextBlock   FontSize="25" Text=" Тип папяти: " />
+                                            <TextBlock   FontSize="25" Text="{Binding Path= TypeMemory2}" />
                                             <TextBlock   FontSize="25" Text=" Производитель: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= Maker2}" />
                                         </StackPanel>
@@ -90,6 +95,8 @@
                                             <TextBlock   FontSize="25" Text="{Binding Path= Model3}" />
                                             <TextBlock   FontSize="25" Text=" Скорость: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= V3 }" />
+                                            <TextBlock   FontSize="25" Text=" Тип папяти: " />
+                                            <TextBlock   FontSize="25" Text="{Binding Path= TypeMemory3 }" />
                                             <TextBlock   FontSize="25" Text=" Производитель: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= Maker3}" />
                                         </StackPanel>
@@ -99,6 +106,8 @@
                                             <TextBlock   FontSize="25" Text="{Binding Path= Model4}" />
                                             <TextBlock   FontSize="25" Text=" Скорость: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= V4 }" />
+                                            <TextBlock   FontSize="25" Text=" Тип папяти: " />
+                                            <TextBlock   FontSize="25" Text="{Binding Path= TypeMemory4 }" />
                                             <TextBlock   FontSize="25" Text=" Производитель: " />
                                             <TextBlock   FontSize="25" Text="{Binding Path= Maker4}" />
                                         </StackPanel>
@@ -118,6 +127,7 @@
                                 <DataGridTextColumn Header="Тип" FontSize="20" Width="270" Binding="{Binding NameType}"/>
                                 <DataGridTextColumn Header="Организация" FontSize="20"  Binding="{Binding NameOrg}"/>
                                 <DataGridTextColumn Header="Номер" FontSize="20"  Binding="{Binding Number}"/>
+                                <DataGridTextColumn Header="Кабинет" FontSize="20"  Binding="{Binding Kabunet}"/>
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>
@@ -135,8 +145,9 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" FontSize="20" Width="30" Binding="{Binding IDPer}"  />
                                 <DataGridTextColumn Header="Тип" FontSize="20" Width="270" Binding="{Binding NameType}"/>
-                                <DataGridTextColumn Header="Организация" FontSize="20"  Binding="{Binding NameOrg}"/>
+                                <DataGridTextColumn Header="Организация" FontSize="20"  Binding="{Binding NameOrg}"/>                              
                                 <DataGridTextColumn Header="Номер" FontSize="20"  Binding="{Binding Number}"/>
+                                <DataGridTextColumn Header="Кабинет" FontSize="20"  Binding="{Binding Kabunet}"/>
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>

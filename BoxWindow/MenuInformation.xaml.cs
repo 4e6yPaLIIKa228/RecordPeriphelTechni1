@@ -37,17 +37,17 @@ namespace RecordPeriphelTechniс.Windows
                 try
                 {
                 connection.Open();
-                    string query  = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Number,
+                    string query  = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType,MenuPerTech.Kabunet ,Organiz.NameOrg, MenuPerTech.Number,
 MenuPerTech.IDComponets, MenuPerTech.StartWork, MenuPerTech.EndWork,
 MenuPerTech.Comments, Status.NamaStatus, Works.NameWorks,Components.ID as Components ,
-Procces.ID, ModelsProc.Model as NameProcces ,Procces.Speed as SpeedProcces, MakersProcc.Name as MakerProcc,
-MaterPlatas.ID, ModelsMatePlat.Model as ModelMatePlat, MakersMaterPlat.Name as MakerMaterPlat,
-VideoCards.ID, ModelsVideos.Model as ModeVideos, VideoCards.VVideoMemory , MakersVideoCard.Name as MakerVideoCard,
+Procces.ID, Procces.Model as NameProcces ,Procces.Speed as SpeedProcces, MakersProcc.Name as MakerProcc,
+MaterPlatas.ID, MaterPlatas.Model as ModelMatePlat, MakersMaterPlat.Name as MakerMaterPlat,
+VideoCards.ID, VideoCards.Model as ModeVideos, VideoCards.VVideoMemory , MakersVideoCard.Name as MakerVideoCard,
 RAMs.ID as IDRAM,
-SlotRAM1.ID as SlotID1, SlotRAM1.Model as Model1, SlotRAM1.Vmemory as V1, SlotRAM1.Maker as Maker1, 
-SlotRAM2.ID as SlotID2, SlotRAM2.Model as Model2 ,SlotRAM2.Vmemory as V2, SlotRAM2.Maker as Maker2,
-SlotRAM3.ID as SlotID3, SlotRAM3.Model as Model3 ,SlotRAM3.Vmemory as V3, SlotRAM3.Maker as Maker3,
-SlotRAM4.ID as SlotID4, SlotRAM4.Model as Model4 ,SlotRAM4.Vmemory as V4, SlotRAM4.Maker as Maker4  
+SlotRAM1.ID as SlotID1, SlotRAM1.Model as Model1, SlotRAM1.Vmemory as V1, SlotRAM1.TypeMemory as TypeMemory1 , SlotRAM1.Maker as Maker1, 
+SlotRAM2.ID as SlotID2, SlotRAM2.Model as Model2 ,SlotRAM2.Vmemory as V2, SlotRAM2.TypeMemory as TypeMemory2,  SlotRAM2.Maker as Maker2,
+SlotRAM3.ID as SlotID3, SlotRAM3.Model as Model3 ,SlotRAM3.Vmemory as V3, SlotRAM3.TypeMemory as TypeMemory3, SlotRAM3.Maker as Maker3,
+SlotRAM4.ID as SlotID4, SlotRAM4.Model as Model4 ,SlotRAM4.Vmemory as V4, SlotRAM4.TypeMemory as TypeMemory4,  SlotRAM4.Maker as Maker4  
 
 FROM MenuPerTech
 JOIN TypeTechs on MenuPerTech.IDTypeTech = TypeTechs.ID
@@ -57,15 +57,12 @@ JOIN Status on MenuPerTech.IDStatus = Status.ID
 JOIN Works on MenuPerTech.IDWorks = Works.ID
 
 JOIN Procces on Components.IDProcces = Procces.ID
-JOIN ModelsProc on Procces.IDModel = ModelsProc.ID
 LEFT JOIN MakersProcc ON Procces.IDMaker = MakersProcc.ID
 
 JOIN MaterPlatas on Components.IDMaterPlata = MaterPlatas.ID
-JOIN ModelsMatePlat on MaterPlatas.IDModel = ModelsMatePlat.ID
 JOIN MakersMaterPlat on MaterPlatas.IDMaker = MakersMaterPlat.ID
 
 JOIN VideoCards on Components.IDVideo = VideoCards.ID
-JOIN ModelsVideos on VideoCards.IDModel = ModelsVideos.ID
 JOIN MakersVideoCard on VideoCards.IDMaker = MakersVideoCard.ID
 
 LEFT JOIN RAMs on Components.ID = RAMs.ID
@@ -120,7 +117,7 @@ WHERE  MenuPerTech.IDTypeTech = '1'
                 try
                 {
                     connection.Open();
-                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Number,
+                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Kabunet, MenuPerTech.Number,
 MenuPerTech.IDComponets, MenuPerTech.StartWork, MenuPerTech.EndWork,
 MenuPerTech.Comments, Status.NamaStatus, Works.NameWorks
 
@@ -172,7 +169,7 @@ WHERE  MenuPerTech.IDTypeTech = '2'
                 try
                 {
                     connection.Open();
-                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Number,
+                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg,MenuPerTech.Kabunet, MenuPerTech.Number,
 MenuPerTech.IDComponets, MenuPerTech.StartWork, MenuPerTech.EndWork,
 MenuPerTech.Comments, Status.NamaStatus, Works.NameWorks
 
@@ -199,27 +196,27 @@ WHERE  MenuPerTech.IDTypeTech = '3'
         }
         private void Eddit_InforPcTex()
         {
-        //    if (InforPcTex.SelectedIndex != -1)
-        //    {
-        //        EditTech tech = new BoxWind EditTech((DataRowView)InforPcTex.SelectedItem);
-        //        tech.Owner = this;
-        //        bool? result = editTech.ShowDialog();
-        //        switch (result)
-        //        {
-        //            default:
-        //                LoadDB_InforPcTex();
-        //                break;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выберите строку с данными,чтобы ее изменить");
-        //    }
+            if (InforPcTex.SelectedIndex != -1)
+            {
+                EditTech tech = new EditTech((DataRowView)InforPcTex.SelectedItem);
+                tech.Owner = this;
+                bool? result = tech.ShowDialog();
+                switch (result)
+                {
+                    default:
+                        LoadDB_InforPcTex();
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку с данными,чтобы ее изменить");
+            }
         }
 
         private void InforPcTex_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Eddit_InforPcTex();
         }
     }
 }
