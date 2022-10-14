@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecordPeriphelTechniс.Windows"
         mc:Ignorable="d"
-        Title="EditTech" Height="650" Width="700">
+        Title="EditTech" Height="700" Width="700">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="15" />
             <ColumnDefinition/>
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
@@ -27,6 +27,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock   FontSize="25" Text=" Тип " />
                             <TextBlock   FontSize="25" Text=" Организация " />
+                            <TextBlock   FontSize="25" Text=" Кабинет " />
                             <TextBlock   FontSize="25" Text=" Номер " />
                             <TextBlock   FontSize="25" Text=" Имя " />
                         </StackPanel>
@@ -34,6 +35,7 @@
                             <ComboBox Width="150" FontSize="25" Name="CombTypeTech" />
                             <ComboBox Width="150" FontSize="25" Name="CombIDOrgamniz"/>
                             <TextBox Width="150" FontSize="25" Name="TextIDKabuneta"/>
+                            <TextBox Width="150" FontSize="25" Name="TextName"/>
                             <TextBox Width="150" FontSize="25" Name="TextNumber"/>                           
                         </StackPanel>
                         <TextBlock   FontSize="25"   Text=" Дата начало/окончания работы " FontWeight="Bold" />
@@ -42,8 +44,8 @@
                             <TextBlock   FontSize="25" Text=" Дата окончания  " />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox Width="150" FontSize="25" Name="TextDataStart" />
-                            <TextBox Width="150" FontSize="25" Name="TextDataEnd"/>
+                            <DatePicker Width="150" FontSize="25" Name="TextDataStart" />
+                            <DatePicker Width="150" FontSize="25" Name="TextDataEnd"/>
                         </StackPanel>
                         <TextBlock   FontSize="25"   Text=" Активность " FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
@@ -63,7 +65,7 @@
                         <TextBlock   FontSize="25"   Text=" Процессор " FontWeight="Bold" />
                         <StackPanel Orientation="Horizontal">
                             <TextBlock   FontSize="25" Text=" Название " />
-                            <TextBlock   FontSize="25" Text=" Скорость " />
+                            <TextBlock   FontSize="25" Text=" Тактовая частота " />
                             <TextBlock   FontSize="25" Text=" Производитель " />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="5,5,0,0">
@@ -114,12 +116,19 @@
 
                             <TextBox Width="150" FontSize="25" Name="TextVideoModel" />
                             <TextBox Width="150" FontSize="25" Name="TextVideoMemory" />
-                            <ComboBox Width="150" FontSize="25" Name="Combmaker" />
+                            <ComboBox Width="150" FontSize="25" Name="CombVidieoMaker" />
 
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
             </TabControl>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="BtnEdit" Width="80" Height="40" Content= "Изменить"  Margin="0,0,25,0" Click="BtnEdit_Click"/>
+                <Button Width="80" Height="40" Content="Удалить" Margin="0,0,25,0"/>
+                <Button Width="80" Height="40" Margin="0,0,25,0"/>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>

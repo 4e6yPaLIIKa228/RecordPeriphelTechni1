@@ -26,7 +26,7 @@
 
                         <DataGrid Grid.Row= "1" Grid.Column="1"  IsReadOnly="True" ColumnWidth="*" x:Name="InforPcTex" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0" MouseDoubleClick="InforPcTex_MouseDoubleClick" >
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID" FontSize="20" Width="30" Binding="{Binding IDPer}"  />
+                                <DataGridTextColumn Header="ID" FontSize="20" Width="30" Binding="{Binding IDMenuPer}"  />
                                 <DataGridTextColumn Header="Тип" FontSize="20" Width="270" Binding="{Binding NameType}"/>
                                 <DataGridTextColumn Header="Организация" FontSize="20"  Binding="{Binding NameOrg}"/>
                                 <DataGridTextColumn Header="Номер" FontSize="20"  Binding="{Binding Number}"/>
@@ -34,7 +34,7 @@
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>
-                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NamaStatus}"/>
+                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NameStatus}"/>
                                 <DataGridTextColumn Header="Работа" FontSize="20"  Binding="{Binding NameWorks}"/>
                                 <DataGridTextColumn Header="Коментарий" FontSize="20"   Binding="{Binding  Comments}"/>
                             </DataGrid.Columns>
@@ -120,8 +120,7 @@
                 </TabItem>
                 <TabItem Header="Перефирийные устройства">
                     <Grid>
-
-                        <DataGrid Grid.Row= "1" Grid.Column="1"  IsReadOnly="True" ColumnWidth="*" x:Name="InforPerTech" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0" >
+                        <DataGrid Grid.Row= "1" Grid.Column="1"  IsReadOnly="True" ColumnWidth="*" x:Name="InforPerTech" CanUserAddRows="False" AutoGenerateColumns="False" RowHeaderWidth="0" MouseDoubleClick="InforPerTech_MouseDoubleClick" >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="ID" FontSize="20" Width="30" Binding="{Binding IDPer}"  />
                                 <DataGridTextColumn Header="Тип" FontSize="20" Width="270" Binding="{Binding NameType}"/>
@@ -131,7 +130,7 @@
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>
-                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NamaStatus}"/>
+                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NameStatus}"/>
                                 <DataGridTextColumn Header="Работа" FontSize="20"  Binding="{Binding NameWorks}"/>
                                 <DataGridTextColumn Header="Коментарий" FontSize="20"   Binding="{Binding  Path = Comments}"/>
                             </DataGrid.Columns>
@@ -151,7 +150,7 @@
                                 <DataGridTextColumn Header="Имя" FontSize="20"  Binding="{Binding NameYstr}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding StartWork}"/>
                                 <DataGridTextColumn Header="Начало работы" FontSize="20"  Binding="{Binding EndWork}"/>
-                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NamaStatus}"/>
+                                <DataGridTextColumn Header="Статус" FontSize="20"  Binding="{Binding NameStatus}"/>
                                 <DataGridTextColumn Header="Работа" FontSize="20"  Binding="{Binding NameWorks}"/>
                                 <DataGridTextColumn Header="Коментарий" FontSize="20"   Binding="{Binding  Path = Comments}"/>
                             </DataGrid.Columns>

@@ -22,60 +22,77 @@ namespace RecordPeriphelTechniс.Windows
     /// </summary>
     public partial class EditTech : Window
     {
-        string idi;
-        public EditTech(DataRowView drv)
+        int TypeEdit;
+        public EditTech(DataRowView drv, int Type)
         {
+
             InitializeComponent();
             CombBoxDowmload();
-
+            TypeEdit = Type;
             CombTypeTech.Text = drv["NameType"].ToString();
             CombIDOrgamniz.Text = drv["NameOrg"].ToString();
             TextIDKabuneta.Text = drv["Kabunet"].ToString();
-            TextNumber.Text = drv["NameYstr"].ToString(); 
+            TextName.Text = drv["NameYstr"].ToString();
+            TextNumber.Text = drv["Number"].ToString();
             TextDataStart.Text = drv["StartWork"].ToString();
             TextDataEnd.Text = drv["EndWork"].ToString();
-            CombIDStatus.Text = drv["NamaStatus"].ToString();
+            CombIDStatus.Text = drv["NameStatus"].ToString();
             CombIDWorks.Text = drv["NameWorks"].ToString();
             TextComments.Text = drv["Comments"].ToString();
 
 
 
-
-            TextProccModel.Text = drv["NameProcces"].ToString();
-            TextSpeed.Text = drv["SpeedProcces"].ToString();
-            CombProccMaker.Text = drv["MakerProcc"].ToString();
-            TextMatePlatModel.Text = drv["ModelMatePlat"].ToString();
-            CombMatePlatMaker.Text = drv["MakerMaterPlat"].ToString();
-
-            TextRAMModel1.Text = drv["Model1"].ToString();
-            TextVmemory1.Text = drv["V1"].ToString();
-            TextTypeMemory1.Text = drv["TypeMemory1"].ToString();
-            TextMaker1.Text = drv["Maker1"].ToString();
-
-            TextRAMModel2.Text = drv["Model2"].ToString();
-            TextVmemory2.Text = drv["V2"].ToString();
-            TextTypeMemory2.Text = drv["TypeMemory2"].ToString();
-            TextMaker2.Text = drv["Maker2"].ToString();
-
-            TextRAMModel3.Text = drv["Model3"].ToString();
-            TextVmemory3.Text = drv["V3"].ToString();
-            TextTypeMemory3.Text = drv["TypeMemory3"].ToString();
-            TextMaker3.Text = drv["Maker3"].ToString();
-
-            TextRAMModel4.Text = drv["Model4"].ToString();
-            TextVmemory4.Text = drv["V4"].ToString();
-            TextTypeMemory4.Text = drv["TypeMemory4"].ToString();
-            TextMaker4.Text = drv["Maker4"].ToString();
-
-            TextVideoModel.Text = drv["ModeVideos"].ToString();
-            TextVideoMemory.Text = drv["VVideoMemory"].ToString();
-            Combmaker.Text = drv["MakerVideoCard"].ToString();
+            if (Type == 1)
+            {
 
 
+                TextProccModel.Text = drv["NameProcces"].ToString();
+                TextSpeed.Text = drv["SpeedProcces"].ToString();
+                CombProccMaker.Text = drv["MakerProcc"].ToString();
+                TextMatePlatModel.Text = drv["ModelMatePlat"].ToString();
+                CombMatePlatMaker.Text = drv["MakerMaterPlat"].ToString();
+
+                TextRAMModel1.Text = drv["Model1"].ToString();
+                TextVmemory1.Text = drv["V1"].ToString();
+                TextTypeMemory1.Text = drv["TypeMemory1"].ToString();
+                TextMaker1.Text = drv["Maker1"].ToString();
+
+                TextRAMModel2.Text = drv["Model2"].ToString();
+                TextVmemory2.Text = drv["V2"].ToString();
+                TextTypeMemory2.Text = drv["TypeMemory2"].ToString();
+                TextMaker2.Text = drv["Maker2"].ToString();
+
+                TextRAMModel3.Text = drv["Model3"].ToString();
+                TextVmemory3.Text = drv["V3"].ToString();
+                TextTypeMemory3.Text = drv["TypeMemory3"].ToString();
+                TextMaker3.Text = drv["Maker3"].ToString();
+
+                TextRAMModel4.Text = drv["Model4"].ToString();
+                TextVmemory4.Text = drv["V4"].ToString();
+                TextTypeMemory4.Text = drv["TypeMemory4"].ToString();
+                TextMaker4.Text = drv["Maker4"].ToString();
+
+                TextVideoModel.Text = drv["ModeVideos"].ToString();
+                TextVideoMemory.Text = drv["VVideoMemory"].ToString();
+                CombVidieoMaker.Text = drv["MakerVideoCard"].ToString();
+                //idi = drv["Components"].ToString();
+
+            }
+            else
+
+            {
+
+                IsEnabledData();
+
+            }
 
 
-           idi = drv["Components"].ToString();
+
+
+
         }
+
+
         public void CombBoxDowmload()  //Данные для комбобоксов 
         {
             using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
@@ -85,7 +102,7 @@ namespace RecordPeriphelTechniс.Windows
                     connection.Open();
                     string query1 = $@"SELECT * FROM TypeTechs"; // 
                     string query2 = $@"SELECT * FROM Organiz"; // 
-                   // string query3 = $@"SELECT * FROM Kabunets"; // 
+                                                               // string query3 = $@"SELECT * FROM Kabunets"; // 
                     string query4 = $@"SELECT * FROM Status"; // 
                     string query5 = $@"SELECT * FROM Works"; // 
                     string query6 = $@"SELECT * FROM MakersProcc"; // 
@@ -115,7 +132,7 @@ namespace RecordPeriphelTechniс.Windows
                     //----------------------------------------------
                     DataTable dt1 = new DataTable("TypeTechs");
                     DataTable dt2 = new DataTable("Organiz");
-                   // DataTable dt3 = new DataTable("NumberKabs");
+                    // DataTable dt3 = new DataTable("NumberKabs");
                     DataTable dt4 = new DataTable("Status");
                     DataTable dt5 = new DataTable("Works");
                     DataTable dt6 = new DataTable("MakersProcc");
@@ -141,24 +158,24 @@ namespace RecordPeriphelTechniс.Windows
                     //----------------------------------------------
                     //----------------------------------------------
                     CombIDStatus.ItemsSource = dt4.DefaultView;
-                    CombIDStatus.DisplayMemberPath = "NamaStatus";
+                    CombIDStatus.DisplayMemberPath = "NameStatus";
                     CombIDStatus.SelectedValuePath = "ID";
                     //----------------------------------------------
                     CombIDWorks.ItemsSource = dt5.DefaultView;
                     CombIDWorks.DisplayMemberPath = "NameWorks";
                     CombIDWorks.SelectedValuePath = "ID";
                     //----------------------------------------------
-                    CombIDWorks.ItemsSource = dt6.DefaultView;
-                    CombIDWorks.DisplayMemberPath = "Model";
-                    CombIDWorks.SelectedValuePath = "ID";
+                    CombProccMaker.ItemsSource = dt6.DefaultView;
+                    CombProccMaker.DisplayMemberPath = "Name";
+                    CombProccMaker.SelectedValuePath = "ID";
                     //----------------------------------------------
-                    CombMatePlatMaker.ItemsSource = dt6.DefaultView;
+                    CombMatePlatMaker.ItemsSource = dt7.DefaultView;
                     CombMatePlatMaker.DisplayMemberPath = "Name";
                     CombMatePlatMaker.SelectedValuePath = "ID";
                     //----------------------------------------------
-                    CombMatePlatMaker.ItemsSource = dt6.DefaultView;
-                    CombMatePlatMaker.DisplayMemberPath = "Name";
-                    CombMatePlatMaker.SelectedValuePath = "ID";
+                    CombVidieoMaker.ItemsSource = dt8.DefaultView;
+                    CombVidieoMaker.DisplayMemberPath = "Name";
+                    CombVidieoMaker.SelectedValuePath = "ID";
                 }
                 catch (Exception ex)
                 {
@@ -167,5 +184,132 @@ namespace RecordPeriphelTechniс.Windows
             }
         }
 
+        public void IsEnabledData()
+        {
+
+            //CombTypeTech.IsEnabled = false;
+            //CombIDOrgamniz.IsEnabled = false;
+            //TextIDKabuneta.IsEnabled = false;
+            //TextNumber.IsEnabled = false;
+            //TextDataStart.IsEnabled = false;
+            //TextDataEnd.IsEnabled = false;
+            //CombIDStatus.IsEnabled = false;
+            //CombIDWorks.IsEnabled = false;
+            //TextComments.IsEnabled = false;
+
+            TextProccModel.IsEnabled = false;
+            TextSpeed.IsEnabled = false;
+            CombProccMaker.IsEnabled = false;
+            TextMatePlatModel.IsEnabled = false;
+            CombMatePlatMaker.IsEnabled = false;
+
+            TextRAMModel1.IsEnabled = false;
+            TextVmemory1.IsEnabled = false;
+            TextTypeMemory1.IsEnabled = false;
+            TextMaker1.IsEnabled = false;
+
+            TextRAMModel2.IsEnabled = false;
+            TextVmemory2.IsEnabled = false;
+            TextTypeMemory2.IsEnabled = false;
+            TextMaker2.IsEnabled = false;
+
+            TextRAMModel3.IsEnabled = false; ;
+            TextVmemory3.IsEnabled = false;
+            TextTypeMemory3.IsEnabled = false;
+            TextMaker3.IsEnabled = false;
+
+            TextRAMModel4.IsEnabled = false;
+            TextVmemory4.IsEnabled = false;
+            TextTypeMemory4.IsEnabled = false;
+            TextMaker4.IsEnabled = false;
+
+            TextVideoModel.IsEnabled = false; ;
+            TextVideoMemory.IsEnabled = false;
+            CombVidieoMaker.IsEnabled = false;
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(DBConnection.myConn))
+            {
+                connection.Open();
+                if (String.IsNullOrEmpty(CombIDOrgamniz.Text) || String.IsNullOrEmpty(TextIDKabuneta.Text) || String.IsNullOrEmpty(TextNumber.Text) || String.IsNullOrEmpty(CombIDStatus.Text) || String.IsNullOrEmpty(TextName.Text) ||
+                    String.IsNullOrEmpty(CombIDWorks.Text))
+                {
+                    MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    int id, id2, id3, id4, id5, id6;
+                    bool resultClass = int.TryParse(CombIDOrgamniz.SelectedValue.ToString(), out id);
+                    bool resultKab = int.TryParse(CombIDStatus.SelectedValue.ToString(), out id2);
+                    bool resultCon = int.TryParse(CombIDWorks.SelectedValue.ToString(), out id3);
+                    //bool resultTitl = int.TryParse(CombProccMaker.SelectedValue.ToString(), out id4);
+                    //bool resultBrand = int.TryParse(CombMatePlatMaker.SelectedValue.ToString(), out id5);
+                    //bool resultModel = int.TryParse(CombVidieoMaker.SelectedValue.ToString(), out id6);
+                    string query = $@"UPDATE MenuPerTech SET IDOrganiz=@IDOrganiz, Kabunet=@Kabunet,Number=@Number,Name=@Name, Number=@Number, StartWork=@StartWork, 
+                                            EndWork=@EndWork ,IDStatus=@IDStatus,IDWorks=@IDWorks,Comments=@Comments WHERE ID=@ID;";
+                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("@ID", Saver.IDMenuPer);
+                        cmd.Parameters.AddWithValue("@IDOrganiz", id);
+                        cmd.Parameters.AddWithValue("@Kabunet", TextIDKabuneta.Text);
+                        cmd.Parameters.AddWithValue("@Number", TextNumber.Text);
+                        cmd.Parameters.AddWithValue("@Name", TextName.Text);
+                        cmd.Parameters.AddWithValue("@StartWork", TextDataStart.Text);
+                        cmd.Parameters.AddWithValue("@EndWork", TextDataEnd.Text);
+                        cmd.Parameters.AddWithValue("@IDStatus", id2);
+                        cmd.Parameters.AddWithValue("@IDWorks", id3);
+                        cmd.Parameters.AddWithValue("@Comments", TextComments.Text);
+                        cmd.ExecuteNonQuery();
+                        // MessageBox.Show("Данные изменены");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+                if (TypeEdit == 1)
+                {
+                    if (String.IsNullOrEmpty(TextProccModel.Text) || String.IsNullOrEmpty(TextSpeed.Text) || String.IsNullOrEmpty(CombProccMaker.Text) ||
+                       String.IsNullOrEmpty(CombMatePlatMaker.Text) || String.IsNullOrEmpty(TextRAMModel1.Text) || String.IsNullOrEmpty(TextVmemory1.Text) || String.IsNullOrEmpty(TextTypeMemory1.Text) ||
+                       String.IsNullOrEmpty(TextMaker1.Text) || String.IsNullOrEmpty(TextVideoModel.Text) || String.IsNullOrEmpty(TextVideoModel.Text) || String.IsNullOrEmpty(CombVidieoMaker.Text))
+                    {
+                        MessageBox.Show("Заполните все поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                    else
+                    {
+                        int id4, id5, id6;
+                        bool resultTitl = int.TryParse(CombProccMaker.SelectedValue.ToString(), out id4);
+                        bool resultBrand = int.TryParse(CombMatePlatMaker.SelectedValue.ToString(), out id5);
+                        bool resultModel = int.TryParse(CombVidieoMaker.SelectedValue.ToString(), out id6);
+                        string query = $@"UPDATE Procces SET Model=@Model, Speed=@Speed,IDMaker=@IDMaker WHERE ID=@ID;";
+                        SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@ID", Saver.ProccesID);
+                            cmd.Parameters.AddWithValue("@Model", TextProccModel.Text);
+                            cmd.Parameters.AddWithValue("@Speed", TextSpeed.Text);
+                            cmd.Parameters.AddWithValue("@IDMaker", id4);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("Данные изменены");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                    }
+                }
+
+            }
+        }
+
     }
 }
+      
+        
+    
+
