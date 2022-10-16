@@ -294,19 +294,76 @@ namespace RecordPeriphelTechniс.Windows
                             cmd.Parameters.AddWithValue("@Speed", TextSpeed.Text);
                             cmd.Parameters.AddWithValue("@IDMaker", id4);
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show("Данные изменены");
+                           // MessageBox.Show("Данные изменены");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        query = $@"UPDATE MaterPlatas SET Model=@Model, IDMaker=@IDMaker WHERE ID=@ID;";
+                        cmd = new SQLiteCommand(query, connection);
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@ID", Saver.MaterPlatID);
+                            cmd.Parameters.AddWithValue("@Model", TextMatePlatModel.Text);
+                            cmd.Parameters.AddWithValue("@IDMaker", id5);
+                            cmd.ExecuteNonQuery();
+                            //MessageBox.Show("Данные изменены");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        query = $@"UPDATE VideoCards SET Model=@Model, VVideoMemory=@VVideoMemory, IDMaker=@IDMaker WHERE ID=@ID;";
+                        cmd = new SQLiteCommand(query, connection);
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@ID", Saver.VideCardID);
+                            cmd.Parameters.AddWithValue("@Model", TextVideoModel.Text);
+                            cmd.Parameters.AddWithValue("@VVideoMemory", TextVideoMemory.Text);
+                            cmd.Parameters.AddWithValue("@IDMaker", id6);
+                            cmd.ExecuteNonQuery();
+                            //MessageBox.Show("Данные изменены");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        query = $@"UPDATE SlotRAM1 SET Model=@Model, Vmemory=@Vmemory, TypeMemory=@TypeMemory,Maker=@Maker WHERE ID=@ID;";
+                        cmd = new SQLiteCommand(query, connection);
+                        try
+                        {
+                            cmd.Parameters.AddWithValue("@ID", Saver.Slot1ID1);
+                            cmd.Parameters.AddWithValue("@Model", TextRAMModel1.Text);
+                            cmd.Parameters.AddWithValue("@Vmemory", TextVmemory1.Text);
+                            cmd.Parameters.AddWithValue("@TypeMemory", TextTypeMemory1.Text);
+                            cmd.Parameters.AddWithValue("@Maker", TextMaker1.Text);
+                            cmd.ExecuteNonQuery();
+                            //MessageBox.Show("Данные изменены");
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message);
                         }
 
+
+                        if (TextRAMModel4.Text != "" && (TextVmemory4.Text == "" || TextTypeMemory4.Text == "" || TextMaker4.Text == ""))
+                        {
+                            MessageBox.Show("Zopolni");
+                        }
+                        else if (TextRAMModel4.Text == "" && (TextVmemory4.Text == "" && TextTypeMemory4.Text == "" && TextMaker4.Text == ""))
+                        {
+                            MessageBox.Show("Bce Pysto");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Otpavil");
+                        }                    
+                       
                     }
                 }
-
             }
         }
-
     }
 }
       
