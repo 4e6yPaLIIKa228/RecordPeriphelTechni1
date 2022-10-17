@@ -92,10 +92,10 @@ WHERE  MenuPerTech.IDTypeTech = '1'
                         Saver.MaterPlatID = dr["MaterPlatID"].ToString();
                         Saver.VideCardID = dr["VideoCardID"].ToString();
                         Saver.IDRAM = dr["IDRAM"].ToString();
-                        Saver.Slot1ID1 = dr["SlotID1"].ToString();
-                        Saver.Slot1ID2 = dr["SlotID2"].ToString();
-                        Saver.Slot1ID3 = dr["SlotID3"].ToString();
-                        Saver.Slot1ID4 = dr["SlotID4"].ToString();
+                        Saver.SlotID1 = dr["SlotID1"].ToString();
+                        Saver.SlotID2 = dr["SlotID2"].ToString();
+                        Saver.SlotID3 = dr["SlotID3"].ToString();
+                        Saver.SlotID4 = dr["SlotID4"].ToString();
 
                         // IDRam3 = dr ["SlotID3"].ToString();
                     }
