@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using RecordPeriphelTechniс.BoxWindow;
 using RecordPeriphelTechniс.Connection;
 
 namespace RecordPeriphelTechniс.Windows
@@ -22,6 +23,7 @@ namespace RecordPeriphelTechniс.Windows
     /// </summary>
     public partial class MenuInformation : Window
     {
+        int IndexTabCont;
         public MenuInformation()
         {
             InitializeComponent();
@@ -80,13 +82,11 @@ WHERE  MenuPerTech.IDTypeTech = '1'
                     InforPcTex.ItemsSource = DT.DefaultView;
                     cmd.ExecuteNonQuery();
                     SQLiteDataReader dr = null;
-                    dr = cmd.ExecuteReader();
-                   // string IDComponents = "";
-                    string IDRam3 = "";
+                    dr = cmd.ExecuteReader();                   
                     while (dr.Read())
                     {
                         //Componets, ProccesID, MaterPlatID, VideCardID, IDRAM, Slot1ID1, Slot1ID2, Slot1ID3, Slot1ID4;
-                        Saver.IDMenuPer = dr["IDMenuPer"].ToString();
+                        Saver.IDMenuPerPC = dr["IDMenuPer"].ToString();
                         Saver.IDComponets = dr["IDComponets"].ToString();
                         Saver.ProccesID = dr["ProccesID"].ToString();
                         Saver.MaterPlatID = dr["MaterPlatID"].ToString();
@@ -97,22 +97,8 @@ WHERE  MenuPerTech.IDTypeTech = '1'
                         Saver.SlotID3 = dr["SlotID3"].ToString();
                         Saver.SlotID4 = dr["SlotID4"].ToString();
 
-                        // IDRam3 = dr ["SlotID3"].ToString();
                     }
-                    if (IDRam3 == "" || IDRam3 == null)
-                    {
-                       
-                    }
-//                    MessageBox.Show(IDComponents);
-//                    query = $@"SELECT CompentsForRAMS.IDRAM, RAMs.VMemory as vmemory FROM Components
-//JOIN CompentsForRAMS on CompentsForRAMS.IDComponets = {IDComponents}
-//JOIN RAMs on CompentsForRAMS.IDRAM = RAMs.ID";
-//                    cmd = new SQLiteCommand(query, connection);
-//                    DT = new DataTable("MenuPerTech");
-//                    SDA = new SQLiteDataAdapter(cmd);
-//                    SDA.Fill(DT);
-//                    InforPerTech.ItemsSource = DT.DefaultView;
-                    //cmd.ExecuteNonQuery();
+                   
 
                 }
                 catch (Exception ex)
@@ -128,7 +114,7 @@ WHERE  MenuPerTech.IDTypeTech = '1'
                 try
                 {
                     connection.Open();
-                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Kabunet, MenuPerTech.Number,
+                    string query = $@"SELECT MenuPerTech.ID as IDMenuPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg, MenuPerTech.Kabunet, MenuPerTech.Number,
 MenuPerTech.IDComponets, MenuPerTech.StartWork, MenuPerTech.EndWork,
 MenuPerTech.Comments, Status.NameStatus, Works.NameWorks
 
@@ -147,25 +133,12 @@ WHERE  MenuPerTech.IDTypeTech = '2'
                     SDA.Fill(DT);
                     InforPerTech.ItemsSource = DT.DefaultView;
                     cmd.ExecuteNonQuery();
-                    //SQLiteDataReader dr = null;
-                    //dr = cmd.ExecuteReader();
-                    //string IDComponents = "";
-                    //string IDRam3 = "";
-                    //while (dr.Read())
-                    //{
-                    //    IDComponents = dr["Components"].ToString();                    
-                    //}                   
-                    //                    MessageBox.Show(IDComponents);
-                    //                    query = $@"SELECT CompentsForRAMS.IDRAM, RAMs.VMemory as vmemory FROM Components
-                    //JOIN CompentsForRAMS on CompentsForRAMS.IDComponets = {IDComponents}
-                    //JOIN RAMs on CompentsForRAMS.IDRAM = RAMs.ID";
-                    //                    cmd = new SQLiteCommand(query, connection);
-                    //                    DT = new DataTable("MenuPerTech");
-                    //                    SDA = new SQLiteDataAdapter(cmd);
-                    //                    SDA.Fill(DT);
-                    //                    InforPerTech.ItemsSource = DT.DefaultView;
-                    //cmd.ExecuteNonQuery();
-
+                    SQLiteDataReader dr = null;
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        Saver.IDMenuPerTech = dr["IDMenuPer"].ToString();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -180,7 +153,7 @@ WHERE  MenuPerTech.IDTypeTech = '2'
                 try
                 {
                     connection.Open();
-                    string query = $@"SELECT MenuPerTech.ID as IDPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg,MenuPerTech.Kabunet, MenuPerTech.Number,
+                    string query = $@"SELECT MenuPerTech.ID as IDMenuPer, MenuPerTech.Name as NameYstr, TypeTechs.NameType, Organiz.NameOrg,MenuPerTech.Kabunet, MenuPerTech.Number,
 MenuPerTech.IDComponets, MenuPerTech.StartWork, MenuPerTech.EndWork,
 MenuPerTech.Comments, Status.NameStatus, Works.NameWorks
 
@@ -197,7 +170,13 @@ WHERE  MenuPerTech.IDTypeTech = '3'
                     SQLiteDataAdapter SDA = new SQLiteDataAdapter(cmd);
                     SDA.Fill(DT);
                     InforDopOboryd.ItemsSource = DT.DefaultView;
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
+                    SQLiteDataReader dr = null;
+                    dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        Saver.IDMenuOboryd = dr["IDMenuPer"].ToString();
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -229,7 +208,7 @@ WHERE  MenuPerTech.IDTypeTech = '3'
         {
             if (InforPerTech.SelectedIndex != -1)
             {
-                int Type = 0;
+                int Type = 2;
                 EditTech tech = new EditTech((DataRowView)InforPerTech.SelectedItem, Type);
                 tech.Owner = this;
                 bool? result = tech.ShowDialog();
@@ -237,6 +216,26 @@ WHERE  MenuPerTech.IDTypeTech = '3'
                 {
                     default:
                         LoadDB_InforPerTech();
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку с данными,чтобы ее изменить");
+            }
+        }
+        private void Eddit_InforDopOboryd()
+        {
+            if (InforDopOboryd.SelectedIndex != -1)
+            {
+                int Type = 3;
+                EditTech tech = new EditTech((DataRowView)InforDopOboryd.SelectedItem, Type);
+                tech.Owner = this;
+                bool? result = tech.ShowDialog();
+                switch (result)
+                {
+                    default:
+                        LoadDB_InforDopOboryd();
                         break;
                 }
             }
@@ -254,6 +253,46 @@ WHERE  MenuPerTech.IDTypeTech = '3'
         private void InforPerTech_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Eddit_InforPerTech();
+        }
+        private void InforDopOboryd_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Eddit_InforDopOboryd();
+        }
+
+
+
+        private void BtnEddit_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Convert.ToString(IndexTabCont));
+            if (IndexTabCont == 0)
+            {
+                Eddit_InforPcTex();
+            }else if(IndexTabCont == 1)
+            {
+                Eddit_InforPerTech();
+            }else if (IndexTabCont == 2)
+            {
+                Eddit_InforDopOboryd();
+            }            
+        }
+
+        private void TabConrlMenuPer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+          IndexTabCont =  TabConrlMenuPer.SelectedIndex;           
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTech addtech = new AddTech();
+            bool? result = addtech.ShowDialog();
+            switch (result)
+            {
+                default:
+                    LoadDB_InforPcTex();
+                    LoadDB_InforPerTech();
+                    LoadDB_InforDopOboryd();
+                    break;
+            }
         }
     }
 }

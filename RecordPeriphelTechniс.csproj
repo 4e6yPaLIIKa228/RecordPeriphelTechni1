@@ -74,6 +74,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BoxWindow\AddTech.xaml.cs">
+      <DependentUpon>AddTech.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Connection\DBConnection.cs" />
     <Compile Include="BoxWindow\EditTech.xaml.cs">
       <DependentUpon>EditTech.xaml</DependentUpon>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Saver.cs" />
+    <Page Include="BoxWindow\AddTech.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="BoxWindow\EditTech.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
