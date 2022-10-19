@@ -381,11 +381,11 @@ namespace RecordPeriphelTechniс.Windows
                         }
 
 
-                        if (TextRAMModel2.Text != "" && (TextVmemory2.Text == "" || TextTypeMemory2.Text == "" || TextMaker2.Text == ""))
+                        if (TextRAMModel2.Text != "" && (TextTypeMemory2.Text == ""  || TextTypeMemory2.Text == "" || TextMaker2.Text == ""))
                         {
                             MessageBox.Show("Заполните");
                         }
-                        else if (TextRAMModel2.Text == "" && (TextVmemory2.Text == "" && TextTypeMemory2.Text == "" && TextMaker2.Text == ""))
+                        else  if (TextRAMModel2.Text == "" && (TextVmemory2.Text == "" && TextTypeMemory2.Text == "" && TextMaker2.Text == ""))
                         {
                             if (Saver.SlotID2 == "") { }
                             else
@@ -419,11 +419,11 @@ namespace RecordPeriphelTechniс.Windows
                                 cmd.Parameters.AddWithValue("@TypeMemory", TextTypeMemory2.Text);
                                 cmd.Parameters.AddWithValue("@Maker", TextMaker2.Text);
                                 cmd.ExecuteNonQuery();
-                                query = $@"SELECT ID FROM SlotRAM2 WHERE Model = {TextRAMModel2.Text} and Vmemory = {TextVmemory2.Text} and TypeMemory = {TextTypeMemory2.Text} and  Maker = {TextMaker2.Text}";
+                                query = $@"SELECT ID FROM SlotRAM2 WHERE Model = '{TextRAMModel2.Text}' and Vmemory = '{TextVmemory2.Text}' and TypeMemory = '{TextTypeMemory2.Text}' and  Maker = '{TextMaker2.Text}'";
                                 cmd = new SQLiteCommand(query, connection);
                                 int IDSlot = Convert.ToInt32(cmd.ExecuteScalar());
                                 //MessageBox.Show(Convert.ToString(IDSlot));
-                                query = $@"UPDATE RAMs SET IDSlotRam3=@IDSlotRam2 WHERE ID=@ID";
+                                query = $@"UPDATE RAMs SET IDSlotRam2=@IDSlotRam2 WHERE ID=@ID";
                                 cmd = new SQLiteCommand(query, connection);
                                 cmd.Parameters.AddWithValue("@IDSlotRam2", IDSlot);
                                 cmd.Parameters.AddWithValue("@ID", Saver.IDRAM);

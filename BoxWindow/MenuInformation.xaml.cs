@@ -48,7 +48,7 @@ VideoCards.ID as VideoCardID, VideoCards.Model as ModeVideos, VideoCards.VVideoM
 RAMs.ID as IDRAM,
 SlotRAM1.ID as SlotID1, SlotRAM1.Model as Model1, SlotRAM1.Vmemory as V1, SlotRAM1.TypeMemory as TypeMemory1 , SlotRAM1.Maker as Maker1, 
 SlotRAM2.ID as SlotID2, SlotRAM2.Model as Model2 ,SlotRAM2.Vmemory as V2, SlotRAM2.TypeMemory as TypeMemory2,  SlotRAM2.Maker as Maker2,
-SlotRAM3.ID as SlotID3, SlotRAM3.Model as Model3 ,SlotRAM3.Vmemory as V3, SlotRAM3.TypeMemory as TypeMemory3, SlotRAM3.Maker as Maker3,
+SlotRAM3.ID as SlotID3, SlotRAM3.Model as Model3 ,SlotRAM3.Vmemory as V3, SlotRAM3.TypeMemory as TypeMemory3,  SlotRAM3.Maker as Maker3,
 SlotRAM4.ID as SlotID4, SlotRAM4.Model as Model4 ,SlotRAM4.Vmemory as V4, SlotRAM4.TypeMemory as TypeMemory4,  SlotRAM4.Maker as Maker4  
 
 FROM MenuPerTech
